@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banco de Preguntas Extra</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef3f9;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #165586;
+      --primary-2: #0f3d61;
+      --success: #d1fae5;
+      --success-border: #10b981;
+      --warning: #fff7ed;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #edf4fb 0%, #f8fbff 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 24px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 28px 0 18px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #1d6ea9 100%);
+      color: white;
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-title {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero-text {
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      max-width: 850px;
+    }
+
+    .top-tools {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 14px;
+    }
+
+    .search-box,
+    .stats-box {
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+    }
+
+    .search-box label,
+    .stats-box h3 {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .search-input {
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 1rem;
+      background: white;
+      color: var(--text);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.95);
+      color: var(--text);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .section-nav {
+      padding: 18px 0 10px;
+    }
+
+    .section-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .nav-card {
+      display: block;
+      text-decoration: none;
+      background: var(--surface);
+      color: var(--text);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+
+    .nav-card small {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-card h2 {
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .nav-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    main {
+      padding: 12px 0 40px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .section-badge {
+      background: var(--surface-2);
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .questions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .question-card {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .question-card:hover {
+      transform: translateY(-3px);
+      border-color: #dbeafe;
+    }
+
+    .question-card.done {
+      background: var(--success);
+      border-color: var(--success-border);
+    }
+
+    .question-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      flex-wrap: wrap;
+    }
+
+    .question-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #e8f1fb;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .question-card.done .question-code {
+      background: rgba(255,255,255,0.7);
+    }
+
+    .done-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .done-toggle input {
+      width: 20px;
+      height: 20px;
+      accent-color: #16a34a;
+      cursor: pointer;
+    }
+
+    .question-body {
+      padding: 16px 18px 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      background: #f9fbfd;
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius-lg);
+      padding: 14px;
+    }
+
+    .question-card.done .field {
+      background: rgba(255,255,255,0.55);
+    }
+
+    .field-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+    }
+
+    .field-content {
+      font-size: 1rem;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .empty-message {
+      background: var(--warning);
+      color: #9a3412;
+      border: 1px solid #fdba74;
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      margin-top: 12px;
+      display: none;
+      font-weight: 700;
+    }
+
+    .footer-space {
+      height: 20px;
+    }
+
+    #btnArriba {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 50%;
+      background: #165586;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+      z-index: 999;
+      display: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    #btnArriba:hover {
+      transform: translateY(-3px);
+      background: #0f3d61;
+    }
+
+    #btnArriba.show {
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      .top-tools {
+        grid-template-columns: 1fr;
+      }
+
+      .questions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .section-nav-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 18px;
+      }
+
+      .question-top,
+      .section-header {
+        align-items: flex-start;
+      }
+
+      #btnArriba {
+        width: 48px;
+        height: 48px;
+        right: 14px;
+        bottom: 14px;
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <h1 class="hero-title">Banco de Preguntas Extra</h1>
+        <p class="hero-text">
+          Busca por código, revisa la pregunta, la pista, la explicación y la respuesta. Marca las ya realizadas para llevar control rápido.
+        </p>
+
+        <div class="top-tools">
+          <div class="search-box">
+            <label for="searchInput">Buscar por código</label>
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="Ejemplo: EX500-03"
+            />
+          </div>
+
+          <div class="stats-box">
+            <h3>Resumen general</h3>
+            <div class="stats-grid">
+              <div class="stat">
+                <strong id="totalQuestions">0</strong>
+                <span>Total</span>
+              </div>
+              <div class="stat">
+                <strong id="doneQuestions">0</strong>
+                <span>Realizadas</span>
+              </div>
+              <div class="stat">
+                <strong id="pendingQuestions">0</strong>
+                <span>Pendientes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="section-nav">
+    <div class="container">
+      <div class="section-nav-grid">
+        <a class="nav-card" href="#sec-200">
+          <small>SECCIÓN 1</small>
+          <h2>Preguntas Extra 200</h2>
+          <p>Preguntas cortas y directas.</p>
+        </a>
+        <a class="nav-card" href="#sec-500">
+          <small>SECCIÓN 2</small>
+          <h2>Preguntas Extra 500</h2>
+          <p>Preguntas de análisis intermedio.</p>
+        </a>
+        <a class="nav-card" href="#sec-1000">
+          <small>SECCIÓN 3</small>
+          <h2>Preguntas Extra 1000</h2>
+          <p>Preguntas integradoras y más pesadas.</p>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div id="emptyMessage" class="empty-message">
+        No se encontraron preguntas con ese código.
+      </div>
+
+      <section class="section" id="sec-200">
+        <div class="section-header">
+          <h2 class="section-title">Preguntas Extra 200</h2>
+          <span class="section-badge" id="count200">0 preguntas</span>
+        </div>
+        <div class="questions-grid" id="grid200"></div>
+      </section>
+
+      <section class="section" id="sec-500">
+        <div class="section-header">
+          <h2 class="section-title">Preguntas Extra 500</h2>
+          <span class="section-badge" id="count500">0 preguntas</span>
+        </div>
+        <div class="questions-grid" id="grid500"></div>
+      </section>
+
+      <section class="section" id="sec-1000">
+        <div class="section-header">
+          <h2 class="section-title">Preguntas Extra 1000</h2>
+          <span class="section-badge" id="count1000">0 preguntas</span>
+        </div>
+        <div class="questions-grid" id="grid1000"></div>
+      </section>
+
+      <div class="footer-space"></div>
+    </div>
+  </main>
+
+  <button id="btnArriba" aria-label="Ir arriba" title="Ir arriba">↑</button>
+
+  <script>
+    const preguntasExtra200 = [
+      {
+        codigo: 'EX200-01',
+        pregunta: '¿Qué produce una glándula exocrina?',
+        respuesta: 'Produce secreciones que se liberan hacia una superficie o cavidad corporal.',
+        pista: 'No va directo a la sangre.',
+        explicacion: 'Te está preguntando qué tipo de producto elaboran las glándulas exocrinas en general.'
+      },
+      {
+        codigo: 'EX200-02',
+        pregunta: '¿Qué tipo de lumen tiene un ácino?',
+        respuesta: 'Tiene un lumen estrecho.',
+        pista: 'Casi no se ve.',
+        explicacion: 'Te pide decir cómo es la luz interna de un ácino.'
+      },
+      {
+        codigo: 'EX200-03',
+        pregunta: '¿Qué tipo de lumen tiene un alvéolo?',
+        respuesta: 'Tiene un lumen amplio y dilatado.',
+        pista: 'Puede almacenar.',
+        explicacion: 'Te está preguntando cómo es la luz interna de un alvéolo.'
+      },
+      {
+        codigo: 'EX200-04',
+        pregunta: '¿Qué célula secreta mucinas?',
+        respuesta: 'La célula mucosa.',
+        pista: 'Secreción espesa.',
+        explicacion: 'Te pide identificar qué tipo celular produce mucinas.'
+      },
+      {
+        codigo: 'EX200-05',
+        pregunta: '¿Qué célula secreta proteínas y enzimas en una secreción acuosa?',
+        respuesta: 'La célula serosa.',
+        pista: 'Agua y proteínas.',
+        explicacion: 'Te está preguntando qué tipo celular produce la secreción serosa.'
+      },
+      {
+        codigo: 'EX200-06',
+        pregunta: '¿Qué glándula ayuda a formar la capa lipídica de la lágrima?',
+        respuesta: 'La glándula de Meibomio.',
+        pista: 'Párpado.',
+        explicacion: 'Te pide decir qué glándula aporta el componente lipídico de la película lagrimal.'
+      },
+      {
+        codigo: 'EX200-07',
+        pregunta: '¿Qué glándula ayuda a formar el componente acuoso de la lágrima?',
+        respuesta: 'La glándula lagrimal.',
+        pista: 'Lágrima acuosa.',
+        explicacion: 'Te está preguntando qué glándula aporta el componente acuoso-proteico de la película lagrimal.'
+      },
+      {
+        codigo: 'EX200-08',
+        pregunta: '¿Qué mecanismo de secreción usa exocitosis?',
+        respuesta: 'El mecanismo merocrino.',
+        pista: 'Sin destruir la célula.',
+        explicacion: 'Te pide identificar el mecanismo en el que el producto sale por exocitosis.'
+      },
+      {
+        codigo: 'EX200-09',
+        pregunta: '¿Qué mecanismo de secreción se asocia con pérdida de parte del polo apical?',
+        respuesta: 'El mecanismo apocrino.',
+        pista: 'Sale un pedazo de célula.',
+        explicacion: 'Te está preguntando cuál es el mecanismo donde se desprende una parte de la célula.'
+      },
+      {
+        codigo: 'EX200-10',
+        pregunta: '¿Qué mecanismo de secreción se asocia con destrucción celular completa?',
+        respuesta: 'El mecanismo holocrino.',
+        pista: 'La célula muere.',
+        explicacion: 'Te pide decir cuál es el mecanismo en el que la célula completa se convierte en secreción.'
+      }
+    ];
+
+    const preguntasExtra500 = [
+      {
+        codigo: 'EX500-01',
+        pregunta: '¿Por qué la secreción serosa se relaciona bien con unidades acinares?',
+        respuesta: 'Porque las unidades acinares favorecen secreción rápida y continua de fluidos ricos en proteínas.',
+        pista: 'Rápida y constante.',
+        explicacion: 'Te pide explicar por qué la forma acinar encaja bien con una secreción serosa.'
+      },
+      {
+        codigo: 'EX500-02',
+        pregunta: '¿Por qué una secreción mucosa suele ser más difícil de expulsar que una serosa?',
+        respuesta: 'Porque es más espesa y viscosa.',
+        pista: 'Más densa.',
+        explicacion: 'Te está preguntando por qué la secreción mucosa requiere más esfuerzo para salir.'
+      },
+      {
+        codigo: 'EX500-03',
+        pregunta: '¿Qué ventaja funcional tiene un alvéolo en una glándula que libera su producto a demanda?',
+        respuesta: 'Permite acumular secreción antes de liberarla en el momento necesario.',
+        pista: 'Reservorio.',
+        explicacion: 'Te pide explicar por qué un alvéolo sirve para glándulas que no secretan de forma continua.'
+      },
+      {
+        codigo: 'EX500-04',
+        pregunta: '¿Qué diferencia funcional hay entre la glándula lagrimal y la de Meibomio?',
+        respuesta: 'La lagrimal aporta secreción acuosa-proteica e inmunológica, y la de Meibomio aporta secreción lipídica.',
+        pista: 'Una hidrata y la otra sella.',
+        explicacion: 'Te está preguntando en qué se diferencian las funciones de ambas glándulas.'
+      },
+      {
+        codigo: 'EX500-05',
+        pregunta: '¿Qué hace el estroma fibromuscular en la próstata?',
+        respuesta: 'Ayuda a expulsar la secreción prostática hacia los conductos.',
+        pista: 'Compensa la falta de mioepitelio.',
+        explicacion: 'Te pide decir qué estructura ayuda a sacar la secreción en la próstata.'
+      },
+      {
+        codigo: 'EX500-06',
+        pregunta: '¿Por qué los conductos pancreáticos son importantes en la función exocrina del páncreas?',
+        respuesta: 'Porque secretan bicarbonato y gran parte del fluido del jugo pancreático.',
+        pista: 'No solo transportan.',
+        explicacion: 'Te está preguntando por qué los conductos pancreáticos participan activamente en la secreción.'
+      },
+      {
+        codigo: 'EX500-07',
+        pregunta: '¿Por qué la glándula mamaria necesita un lumen amplio en sus unidades secretoras?',
+        respuesta: 'Porque debe almacenar leche antes de su eyección.',
+        pista: 'Guardar antes de sacar.',
+        explicacion: 'Te pide explicar por qué la unidad alveolar es útil en la glándula mamaria.'
+      },
+      {
+        codigo: 'EX500-08',
+        pregunta: '¿Qué hacen los conductos salivales con la saliva antes de que salga a la cavidad oral?',
+        respuesta: 'Modifican su composición iónica.',
+        pista: 'La ajustan.',
+        explicacion: 'Te está preguntando qué transformación hacen los conductos sobre la saliva.'
+      },
+      {
+        codigo: 'EX500-09',
+        pregunta: '¿Qué función tiene la oxitocina en glándulas con células mioepiteliales?',
+        respuesta: 'Estimula su contracción para facilitar la expulsión de la secreción.',
+        pista: 'Aprieta para sacar.',
+        explicacion: 'Te pide decir qué hace la oxitocina sobre las células mioepiteliales.'
+      },
+      {
+        codigo: 'EX500-10',
+        pregunta: '¿Por qué las glándulas lipídicas requieren menos modificación ductal?',
+        respuesta: 'Porque su secreción tiene poca participación de agua e iones.',
+        pista: 'Menos fase acuosa.',
+        explicacion: 'Te está preguntando por qué los ductos modifican menos una secreción lipídica.'
+      }
+    ];
+
+    const preguntasExtra1000 = [
+      {
+        codigo: 'EX1000-01',
+        pregunta: 'Explica por qué la estructura de una glándula no puede separarse de su función.',
+        respuesta: 'Porque la forma de la unidad secretora y la organización de los conductos determinan qué se secreta, cómo se modifica y cómo se libera.',
+        pista: 'La forma manda.',
+        explicacion: 'Te pide unir directamente la morfología glandular con el tipo de secreción y su función.'
+      },
+      {
+        codigo: 'EX1000-02',
+        pregunta: '¿Por qué el páncreas exocrino se entiende mejor funcionalmente si se considera túbulo-acinar?',
+        respuesta: 'Porque sus acinos producen enzimas, pero sus conductos también son esenciales al aportar bicarbonato y fluido.',
+        pista: 'Ácinos más ductos.',
+        explicacion: 'Te está preguntando por qué la función pancreática depende tanto de los ácinos como de los conductos.'
+      },
+      {
+        codigo: 'EX1000-03',
+        pregunta: '¿Por qué la glándula mamaria combina almacenamiento y eyección controlada?',
+        respuesta: 'Porque sus unidades alveolares permiten acumular leche y el mioepitelio permite expulsarla ante estímulo hormonal.',
+        pista: 'Guardar y luego sacar.',
+        explicacion: 'Te pide explicar cómo se integran la forma alveolar y la regulación hormonal en la mama.'
+      },
+      {
+        codigo: 'EX1000-04',
+        pregunta: 'Explica por qué las glándulas con secreción constante suelen adaptarse mejor a una organización acinar.',
+        respuesta: 'Porque la organización acinar favorece producción rápida y continua, sin necesidad de gran capacidad de almacenamiento.',
+        pista: 'No están hechas para guardar.',
+        explicacion: 'Te está preguntando por qué las glándulas de función continua tienden a ser acinares.'
+      },
+      {
+        codigo: 'EX1000-05',
+        pregunta: '¿Por qué la glándula de Meibomio necesita una secreción holocrina para cumplir bien su función?',
+        respuesta: 'Porque así libera una cantidad importante de lípidos necesarios para formar la capa superficial que evita la evaporación lagrimal.',
+        pista: 'Mucho lípido de una.',
+        explicacion: 'Te pide explicar por qué el mecanismo holocrino tiene sentido funcional en la glándula de Meibomio.'
+      },
+      {
+        codigo: 'EX1000-06',
+        pregunta: 'Compara el papel del mioepitelio en glándula mamaria y glándula lagrimal.',
+        respuesta: 'En ambas ayuda a expulsar la secreción, pero en la mamaria es clave para la eyección de leche y en la lagrimal facilita la salida de secreción hacia los conductos.',
+        pista: 'Misma idea, distinto contexto.',
+        explicacion: 'Te está preguntando cómo se parece y cómo cambia la función del mioepitelio en ambas glándulas.'
+      },
+      {
+        codigo: 'EX1000-07',
+        pregunta: '¿Por qué una secreción más compleja puede requerir mecanismos diferentes al merocrino?',
+        respuesta: 'Porque cuando contiene más lípidos o componentes complejos puede necesitar liberar parte de la célula o incluso toda la célula.',
+        pista: 'El contenido cambia la salida.',
+        explicacion: 'Te pide relacionar el tipo de producto secretado con el mecanismo de secreción.'
+      },
+      {
+        codigo: 'EX1000-08',
+        pregunta: '¿Cómo influye el contenido acuoso de una secreción en la importancia funcional del ducto?',
+        respuesta: 'Las secreciones más acuosas suelen requerir mayor modificación de agua e iones durante el trayecto, por lo que el ducto adquiere más importancia.',
+        pista: 'Más agua, más ajuste.',
+        explicacion: 'Te está preguntando por qué los ductos se vuelven más importantes cuando la secreción tiene mucho componente acuoso.'
+      },
+      {
+        codigo: 'EX1000-09',
+        pregunta: '¿Por qué la película lagrimal necesita tanto la glándula lagrimal como la de Meibomio?',
+        respuesta: 'Porque una aporta el componente acuoso-proteico e inmunológico y la otra aporta el componente lipídico que evita evaporación.',
+        pista: 'Dos glándulas, dos capas.',
+        explicacion: 'Te pide explicar por qué ambas glándulas son necesarias para una película lagrimal funcional.'
+      },
+      {
+        codigo: 'EX1000-10',
+        pregunta: 'Explica por qué una alteración ductal puede cambiar la función glandular aunque la unidad secretora siga intacta.',
+        respuesta: 'Porque el ducto puede ser necesario para modificar, transportar o liberar correctamente la secreción, de modo que si falla, el producto final también cambia.',
+        pista: 'La fábrica puede estar bien y la carretera mal.',
+        explicacion: 'Te está preguntando por qué una falla en los conductos también puede alterar la función de la glándula.'
+      }
+    ];
+
+    const preguntas = {
+      200: preguntasExtra200,
+      500: preguntasExtra500,
+      1000: preguntasExtra1000
+    };
+
+    const STORAGE_KEY = 'banco_preguntas_extra_realizadas';
+    const savedStatus = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+    const grids = {
+      200: document.getElementById('grid200'),
+      500: document.getElementById('grid500'),
+      1000: document.getElementById('grid1000')
+    };
+
+    const counters = {
+      200: document.getElementById('count200'),
+      500: document.getElementById('count500'),
+      1000: document.getElementById('count1000')
+    };
+
+    const searchInput = document.getElementById('searchInput');
+    const emptyMessage = document.getElementById('emptyMessage');
+    const btnArriba = document.getElementById('btnArriba');
+
+    function saveStatus() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(savedStatus));
+    }
+
+    function createQuestionCard(item) {
+      const article = document.createElement('article');
+      article.className = 'question-card';
+      article.dataset.codigo = item.codigo.toLowerCase();
+
+      if (savedStatus[item.codigo]) {
+        article.classList.add('done');
+      }
+
+      article.innerHTML = `
+        <div class="question-top">
+          <span class="question-code">${item.codigo}</span>
+          <label class="done-toggle">
+            <input type="checkbox" ${savedStatus[item.codigo] ? 'checked' : ''}>
+            <span>Pregunta realizada</span>
+          </label>
+        </div>
+        <div class="question-body">
+          <div class="field">
+            <div class="field-title">Pregunta</div>
+            <div class="field-content">${item.pregunta}</div>
+          </div>
+          <div class="field">
+            <div class="field-title">Pista</div>
+            <div class="field-content">${item.pista}</div>
+          </div>
+          <div class="field">
+            <div class="field-title">Explicación</div>
+            <div class="field-content">${item.explicacion || 'Sin explicación.'}</div>
+          </div>
+          <div class="field">
+            <div class="field-title">Respuesta</div>
+            <div class="field-content">${item.respuesta}</div>
+          </div>
+        </div>
+      `;
+
+      const checkbox = article.querySelector('input[type="checkbox"]');
+      checkbox.addEventListener('change', () => {
+        savedStatus[item.codigo] = checkbox.checked;
+        article.classList.toggle('done', checkbox.checked);
+        saveStatus();
+        updateStats();
+      });
+
+      return article;
+    }
+
+    function renderAll() {
+      Object.keys(grids).forEach((nivel) => {
+        grids[nivel].innerHTML = '';
+        preguntas[nivel].forEach((item) => {
+          grids[nivel].appendChild(createQuestionCard(item));
+        });
+        counters[nivel].textContent = `${preguntas[nivel].length} preguntas`;
+      });
+      updateStats();
+    }
+
+    function updateStats() {
+      const allQuestions = Object.values(preguntas).flat();
+      const total = allQuestions.length;
+      const done = allQuestions.filter((q) => savedStatus[q.codigo]).length;
+      const pending = total - done;
+
+      document.getElementById('totalQuestions').textContent = total;
+      document.getElementById('doneQuestions').textContent = done;
+      document.getElementById('pendingQuestions').textContent = pending;
+    }
+
+    function filterQuestions() {
+      const value = searchInput.value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.question-card');
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const match = card.dataset.codigo.includes(value);
+        card.style.display = match ? 'block' : 'none';
+        if (match) visibleCount++;
+      });
+
+      emptyMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 250) {
+        btnArriba.classList.add('show');
+      } else {
+        btnArriba.classList.remove('show');
+      }
+    });
+
+    btnArriba.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    searchInput.addEventListener('input', filterQuestions);
+
+    renderAll();
+  </script>
+</body>
+</html>

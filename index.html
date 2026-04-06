@@ -483,222 +483,192 @@
 
   <script>
     const preguntasExtra200 = [
-      {
-        codigo: 'EX200-01',
-        pregunta: '¿Qué produce una glándula exocrina?',
-        respuesta: 'Produce secreciones que se liberan hacia una superficie o cavidad corporal.',
-        pista: 'No va directo a la sangre.',
-        explicacion: 'Te está preguntando qué tipo de producto elaboran las glándulas exocrinas en general.'
-      },
-      {
-        codigo: 'EX200-02',
-        pregunta: '¿Qué tipo de lumen tiene un ácino?',
-        respuesta: 'Tiene un lumen estrecho.',
-        pista: 'Casi no se ve.',
-        explicacion: 'Te pide decir cómo es la luz interna de un ácino.'
-      },
-      {
-        codigo: 'EX200-03',
-        pregunta: '¿Qué tipo de lumen tiene un alvéolo?',
-        respuesta: 'Tiene un lumen amplio y dilatado.',
-        pista: 'Puede almacenar.',
-        explicacion: 'Te está preguntando cómo es la luz interna de un alvéolo.'
-      },
-      {
-        codigo: 'EX200-04',
-        pregunta: '¿Qué célula secreta mucinas?',
-        respuesta: 'La célula mucosa.',
-        pista: 'Secreción espesa.',
-        explicacion: 'Te pide identificar qué tipo celular produce mucinas.'
-      },
-      {
-        codigo: 'EX200-05',
-        pregunta: '¿Qué célula secreta proteínas y enzimas en una secreción acuosa?',
-        respuesta: 'La célula serosa.',
-        pista: 'Agua y proteínas.',
-        explicacion: 'Te está preguntando qué tipo celular produce la secreción serosa.'
-      },
-      {
-        codigo: 'EX200-06',
-        pregunta: '¿Qué glándula ayuda a formar la capa lipídica de la lágrima?',
-        respuesta: 'La glándula de Meibomio.',
-        pista: 'Párpado.',
-        explicacion: 'Te pide decir qué glándula aporta el componente lipídico de la película lagrimal.'
-      },
-      {
-        codigo: 'EX200-07',
-        pregunta: '¿Qué glándula ayuda a formar el componente acuoso de la lágrima?',
-        respuesta: 'La glándula lagrimal.',
-        pista: 'Lágrima acuosa.',
-        explicacion: 'Te está preguntando qué glándula aporta el componente acuoso-proteico de la película lagrimal.'
-      },
-      {
-        codigo: 'EX200-08',
-        pregunta: '¿Qué mecanismo de secreción usa exocitosis?',
-        respuesta: 'El mecanismo merocrino.',
-        pista: 'Sin destruir la célula.',
-        explicacion: 'Te pide identificar el mecanismo en el que el producto sale por exocitosis.'
-      },
-      {
-        codigo: 'EX200-09',
-        pregunta: '¿Qué mecanismo de secreción se asocia con pérdida de parte del polo apical?',
-        respuesta: 'El mecanismo apocrino.',
-        pista: 'Sale un pedazo de célula.',
-        explicacion: 'Te está preguntando cuál es el mecanismo donde se desprende una parte de la célula.'
-      },
-      {
-        codigo: 'EX200-10',
-        pregunta: '¿Qué mecanismo de secreción se asocia con destrucción celular completa?',
-        respuesta: 'El mecanismo holocrino.',
-        pista: 'La célula muere.',
-        explicacion: 'Te pide decir cuál es el mecanismo en el que la célula completa se convierte en secreción.'
-      }
-    ];
+  {
+    codigo: 'EX200-01',
+    pregunta: '¿Qué forma general tienen las unidades acinares?',
+    respuesta: 'Tienen forma redondeada o de saco.',
+    pista: 'Te pregunta por la forma básica del ácino, no por su función ni por su secreción.'
+  },
+  {
+    codigo: 'EX200-02',
+    pregunta: '¿Qué función principal tienen las unidades acinares?',
+    respuesta: 'Están diseñadas para la síntesis y secreción rápida de fluidos ricos en proteínas y enzimas.',
+    pista: 'Te pide la función del ácino; piensa en secreción rápida, no en almacenamiento.'
+  },
+  {
+    codigo: 'EX200-03',
+    pregunta: '¿Qué función principal tienen las unidades alveolares?',
+    respuesta: 'Tienen función de reservorio, ya que almacenan grandes volúmenes de secreción.',
+    pista: 'Te está preguntando qué hace especial al alvéolo frente al ácino: guardar antes de liberar.'
+  },
+  {
+    codigo: 'EX200-04',
+    pregunta: '¿Qué función principal tienen las unidades tubulares?',
+    respuesta: 'Conducen eficientemente la secreción y pueden modificar su composición.',
+    pista: 'Te pide la idea central del túbulo: transportar y ajustar, no almacenar.'
+  },
+  {
+    codigo: 'EX200-05',
+    pregunta: '¿Qué tipo de células rodean las unidades secretoras para ayudar a expulsar la secreción?',
+    respuesta: 'Las células mioepiteliales.',
+    pista: 'Te pregunta qué células ayudan por contracción, como si exprimieran la glándula.'
+  },
+  {
+    codigo: 'EX200-06',
+    pregunta: '¿Qué glándula especializada produce leche?',
+    respuesta: 'La glándula mamaria.',
+    pista: 'Te pide identificar la glándula relacionada con nutrición del recién nacido.'
+  },
+  {
+    codigo: 'EX200-07',
+    pregunta: '¿Qué glándula especializada participa en la movilidad y protección de los espermatozoides?',
+    respuesta: 'La próstata.',
+    pista: 'Te está preguntando por la glándula que aporta parte del líquido seminal, no por los testículos.'
+  },
+  {
+    codigo: 'EX200-08',
+    pregunta: '¿Qué hormona estimula la secreción de la glándula uterina en la fase secretora?',
+    respuesta: 'La progesterona.',
+    pista: 'Te pide la hormona ligada a actividad secretora endometrial, no a proliferación.'
+  },
+  {
+    codigo: 'EX200-09',
+    pregunta: '¿Qué tipo de epitelio tienen los conductos intercalados?',
+    respuesta: 'Epitelio cúbico simple.',
+    pista: 'Te pregunta por el revestimiento del primer segmento del sistema ductal.'
+  },
+  {
+    codigo: 'EX200-10',
+    pregunta: '¿Qué tipo de epitelio pueden presentar los conductos terminales?',
+    respuesta: 'Epitelio variable, como cilíndrico estratificado.',
+    pista: 'Te pide el epitelio del último segmento ductal, no el del intercalado.'
+  }
+];
 
-    const preguntasExtra500 = [
-      {
-        codigo: 'EX500-01',
-        pregunta: '¿Por qué la secreción serosa se relaciona bien con unidades acinares?',
-        respuesta: 'Porque las unidades acinares favorecen secreción rápida y continua de fluidos ricos en proteínas.',
-        pista: 'Rápida y constante.',
-        explicacion: 'Te pide explicar por qué la forma acinar encaja bien con una secreción serosa.'
-      },
-      {
-        codigo: 'EX500-02',
-        pregunta: '¿Por qué una secreción mucosa suele ser más difícil de expulsar que una serosa?',
-        respuesta: 'Porque es más espesa y viscosa.',
-        pista: 'Más densa.',
-        explicacion: 'Te está preguntando por qué la secreción mucosa requiere más esfuerzo para salir.'
-      },
-      {
-        codigo: 'EX500-03',
-        pregunta: '¿Qué ventaja funcional tiene un alvéolo en una glándula que libera su producto a demanda?',
-        respuesta: 'Permite acumular secreción antes de liberarla en el momento necesario.',
-        pista: 'Reservorio.',
-        explicacion: 'Te pide explicar por qué un alvéolo sirve para glándulas que no secretan de forma continua.'
-      },
-      {
-        codigo: 'EX500-04',
-        pregunta: '¿Qué diferencia funcional hay entre la glándula lagrimal y la de Meibomio?',
-        respuesta: 'La lagrimal aporta secreción acuosa-proteica e inmunológica, y la de Meibomio aporta secreción lipídica.',
-        pista: 'Una hidrata y la otra sella.',
-        explicacion: 'Te está preguntando en qué se diferencian las funciones de ambas glándulas.'
-      },
-      {
-        codigo: 'EX500-05',
-        pregunta: '¿Qué hace el estroma fibromuscular en la próstata?',
-        respuesta: 'Ayuda a expulsar la secreción prostática hacia los conductos.',
-        pista: 'Compensa la falta de mioepitelio.',
-        explicacion: 'Te pide decir qué estructura ayuda a sacar la secreción en la próstata.'
-      },
-      {
-        codigo: 'EX500-06',
-        pregunta: '¿Por qué los conductos pancreáticos son importantes en la función exocrina del páncreas?',
-        respuesta: 'Porque secretan bicarbonato y gran parte del fluido del jugo pancreático.',
-        pista: 'No solo transportan.',
-        explicacion: 'Te está preguntando por qué los conductos pancreáticos participan activamente en la secreción.'
-      },
-      {
-        codigo: 'EX500-07',
-        pregunta: '¿Por qué la glándula mamaria necesita un lumen amplio en sus unidades secretoras?',
-        respuesta: 'Porque debe almacenar leche antes de su eyección.',
-        pista: 'Guardar antes de sacar.',
-        explicacion: 'Te pide explicar por qué la unidad alveolar es útil en la glándula mamaria.'
-      },
-      {
-        codigo: 'EX500-08',
-        pregunta: '¿Qué hacen los conductos salivales con la saliva antes de que salga a la cavidad oral?',
-        respuesta: 'Modifican su composición iónica.',
-        pista: 'La ajustan.',
-        explicacion: 'Te está preguntando qué transformación hacen los conductos sobre la saliva.'
-      },
-      {
-        codigo: 'EX500-09',
-        pregunta: '¿Qué función tiene la oxitocina en glándulas con células mioepiteliales?',
-        respuesta: 'Estimula su contracción para facilitar la expulsión de la secreción.',
-        pista: 'Aprieta para sacar.',
-        explicacion: 'Te pide decir qué hace la oxitocina sobre las células mioepiteliales.'
-      },
-      {
-        codigo: 'EX500-10',
-        pregunta: '¿Por qué las glándulas lipídicas requieren menos modificación ductal?',
-        respuesta: 'Porque su secreción tiene poca participación de agua e iones.',
-        pista: 'Menos fase acuosa.',
-        explicacion: 'Te está preguntando por qué los ductos modifican menos una secreción lipídica.'
-      }
-    ];
+const preguntasExtra500 = [
+  {
+    codigo: 'EX500-01',
+    pregunta: '¿Por qué el lumen del ácino favorece secreción rápida?',
+    respuesta: 'Porque su lumen estrecho se relaciona con síntesis y liberación rápida del producto, más que con almacenamiento.',
+    pista: 'Te pide relacionar el tamaño pequeño del lumen con una función de salida rápida.'
+  },
+  {
+    codigo: 'EX500-02',
+    pregunta: '¿Por qué el alvéolo se considera una unidad de reservorio?',
+    respuesta: 'Porque su lumen amplio permite acumular grandes volúmenes de secreción antes de liberarlos.',
+    pista: 'Te está preguntando qué rasgo estructural permite guardar el producto antes de expulsarlo.'
+  },
+  {
+    codigo: 'EX500-03',
+    pregunta: '¿Qué diferencia funcional básica existe entre glándula lagrimal y glándula mamaria?',
+    respuesta: 'La lagrimal secreta de forma rápida y continua para homeostasis ocular, mientras la mamaria produce, almacena y libera leche bajo control hormonal.',
+    pista: 'Te pide comparar una glándula de secreción continua con otra de reserva y eyección.'
+  },
+  {
+    codigo: 'EX500-04',
+    pregunta: '¿Por qué la glándula de Meibomio puede relacionarse con una barrera contra evaporación?',
+    respuesta: 'Porque su secreción lipídica forma una capa superficial que disminuye la pérdida de agua de la película lagrimal.',
+    pista: 'Te está preguntando qué hace funcionalmente el meibum sobre la superficie ocular.'
+  },
+  {
+    codigo: 'EX500-05',
+    pregunta: '¿Qué diferencia hay entre regulación hormonal de la glándula mamaria y de la glándula uterina?',
+    respuesta: 'La glándula mamaria depende de prolactina para producción y oxitocina para eyección, mientras la uterina depende sobre todo de estrógenos y progesterona para proliferación y secreción.',
+    pista: 'Te pide comparar qué hormonas dominan en cada glándula y para qué sirve cada una.'
+  },
+  {
+    codigo: 'EX500-06',
+    pregunta: '¿Por qué los conductos intercalados modifican poco la secreción?',
+    respuesta: 'Porque son el primer segmento del sistema ductal y su función principal es recibir y transportar inicialmente la secreción.',
+    pista: 'Te está preguntando por qué este conducto se enfoca más en recibir y llevar que en transformar.'
+  },
+  {
+    codigo: 'EX500-07',
+    pregunta: '¿Por qué los conductos terminales se asocian más con conducción y protección que con modificación intensa?',
+    respuesta: 'Porque son el último segmento del sistema ductal, de mayor calibre, encargados de llevar la secreción al exterior y proteger su flujo.',
+    pista: 'Te pide la función del último tramo del ducto, cuando la secreción ya viene bastante procesada.'
+  },
+  {
+    codigo: 'EX500-08',
+    pregunta: '¿Qué diferencia existe entre secreción serosa y secreción lipídica en cuanto a mecanismo de liberación?',
+    respuesta: 'La secreción serosa suele liberarse por mecanismo merocrino, mientras la lipídica puede liberarse por mecanismo holocrino.',
+    pista: 'Te está preguntando cómo cambia la forma de salida cuando el producto es acuoso-proteico frente a graso.'
+  },
+  {
+    codigo: 'EX500-09',
+    pregunta: '¿Por qué la próstata puede acumular secreción antes de liberarla?',
+    respuesta: 'Porque posee unidades alveolares con lumen amplio y una organización adaptada a liberación durante la eyaculación.',
+    pista: 'Te pide unir la forma alveolar con una liberación que no es continua, sino a demanda.'
+  },
+  {
+    codigo: 'EX500-10',
+    pregunta: '¿Qué diferencia estructural básica existe entre la glándula uterina y la glándula mamaria?',
+    respuesta: 'La glándula uterina es simple tubular, mientras la glándula mamaria es compuesta tubuloalveolar.',
+    pista: 'Te está preguntando por la clasificación morfológica de ambas, no por sus hormonas.'
+  }
+];
 
-    const preguntasExtra1000 = [
-      {
-        codigo: 'EX1000-01',
-        pregunta: 'Explica por qué la estructura de una glándula no puede separarse de su función.',
-        respuesta: 'Porque la forma de la unidad secretora y la organización de los conductos determinan qué se secreta, cómo se modifica y cómo se libera.',
-        pista: 'La forma manda.',
-        explicacion: 'Te pide unir directamente la morfología glandular con el tipo de secreción y su función.'
-      },
-      {
-        codigo: 'EX1000-02',
-        pregunta: '¿Por qué el páncreas exocrino se entiende mejor funcionalmente si se considera túbulo-acinar?',
-        respuesta: 'Porque sus acinos producen enzimas, pero sus conductos también son esenciales al aportar bicarbonato y fluido.',
-        pista: 'Ácinos más ductos.',
-        explicacion: 'Te está preguntando por qué la función pancreática depende tanto de los ácinos como de los conductos.'
-      },
-      {
-        codigo: 'EX1000-03',
-        pregunta: '¿Por qué la glándula mamaria combina almacenamiento y eyección controlada?',
-        respuesta: 'Porque sus unidades alveolares permiten acumular leche y el mioepitelio permite expulsarla ante estímulo hormonal.',
-        pista: 'Guardar y luego sacar.',
-        explicacion: 'Te pide explicar cómo se integran la forma alveolar y la regulación hormonal en la mama.'
-      },
-      {
-        codigo: 'EX1000-04',
-        pregunta: 'Explica por qué las glándulas con secreción constante suelen adaptarse mejor a una organización acinar.',
-        respuesta: 'Porque la organización acinar favorece producción rápida y continua, sin necesidad de gran capacidad de almacenamiento.',
-        pista: 'No están hechas para guardar.',
-        explicacion: 'Te está preguntando por qué las glándulas de función continua tienden a ser acinares.'
-      },
-      {
-        codigo: 'EX1000-05',
-        pregunta: '¿Por qué la glándula de Meibomio necesita una secreción holocrina para cumplir bien su función?',
-        respuesta: 'Porque así libera una cantidad importante de lípidos necesarios para formar la capa superficial que evita la evaporación lagrimal.',
-        pista: 'Mucho lípido de una.',
-        explicacion: 'Te pide explicar por qué el mecanismo holocrino tiene sentido funcional en la glándula de Meibomio.'
-      },
-      {
-        codigo: 'EX1000-06',
-        pregunta: 'Compara el papel del mioepitelio en glándula mamaria y glándula lagrimal.',
-        respuesta: 'En ambas ayuda a expulsar la secreción, pero en la mamaria es clave para la eyección de leche y en la lagrimal facilita la salida de secreción hacia los conductos.',
-        pista: 'Misma idea, distinto contexto.',
-        explicacion: 'Te está preguntando cómo se parece y cómo cambia la función del mioepitelio en ambas glándulas.'
-      },
-      {
-        codigo: 'EX1000-07',
-        pregunta: '¿Por qué una secreción más compleja puede requerir mecanismos diferentes al merocrino?',
-        respuesta: 'Porque cuando contiene más lípidos o componentes complejos puede necesitar liberar parte de la célula o incluso toda la célula.',
-        pista: 'El contenido cambia la salida.',
-        explicacion: 'Te pide relacionar el tipo de producto secretado con el mecanismo de secreción.'
-      },
-      {
-        codigo: 'EX1000-08',
-        pregunta: '¿Cómo influye el contenido acuoso de una secreción en la importancia funcional del ducto?',
-        respuesta: 'Las secreciones más acuosas suelen requerir mayor modificación de agua e iones durante el trayecto, por lo que el ducto adquiere más importancia.',
-        pista: 'Más agua, más ajuste.',
-        explicacion: 'Te está preguntando por qué los ductos se vuelven más importantes cuando la secreción tiene mucho componente acuoso.'
-      },
-      {
-        codigo: 'EX1000-09',
-        pregunta: '¿Por qué la película lagrimal necesita tanto la glándula lagrimal como la de Meibomio?',
-        respuesta: 'Porque una aporta el componente acuoso-proteico e inmunológico y la otra aporta el componente lipídico que evita evaporación.',
-        pista: 'Dos glándulas, dos capas.',
-        explicacion: 'Te pide explicar por qué ambas glándulas son necesarias para una película lagrimal funcional.'
-      },
-      {
-        codigo: 'EX1000-10',
-        pregunta: 'Explica por qué una alteración ductal puede cambiar la función glandular aunque la unidad secretora siga intacta.',
-        respuesta: 'Porque el ducto puede ser necesario para modificar, transportar o liberar correctamente la secreción, de modo que si falla, el producto final también cambia.',
-        pista: 'La fábrica puede estar bien y la carretera mal.',
-        explicacion: 'Te está preguntando por qué una falla en los conductos también puede alterar la función de la glándula.'
-      }
+const preguntasExtra1000 = [
+  {
+    codigo: 'EX1000-01',
+    pregunta: 'Explica por qué la glándula lagrimal se adapta mejor a una organización acinar que alveolar.',
+    respuesta: 'Porque necesita secreción rápida y continua de un fluido acuoso-proteico para mantener la superficie ocular, no almacenar grandes volúmenes antes de liberarlos.',
+    pista: 'Te pide justificar por qué una función homeostática continua encaja mejor con ácinos que con alvéolos.'
+  },
+  {
+    codigo: 'EX1000-02',
+    pregunta: 'Explica por qué la glándula mamaria se adapta mejor a una organización alveolar que acinar.',
+    respuesta: 'Porque necesita producir leche, almacenarla temporalmente y liberarla en respuesta a estímulos específicos, lo que requiere un lumen amplio.',
+    pista: 'Te está preguntando por qué esta glándula necesita reservorio y eyección, no solo secreción inmediata.'
+  },
+  {
+    codigo: 'EX1000-03',
+    pregunta: '¿Por qué la glándula de Meibomio combina bien una unidad acinar con secreción holocrina?',
+    respuesta: 'Porque el ácino permite acumulación de producto y la secreción holocrina libera gran cantidad de lípidos necesarios para formar la barrera superficial de la lágrima.',
+    pista: 'Te pide unir forma acinar con una salida lipídica masiva y funcional.'
+  },
+  {
+    codigo: 'EX1000-04',
+    pregunta: 'Explica por qué una obstrucción ductal puede alterar la función glandular aunque las células secretoras sigan presentes.',
+    respuesta: 'Porque si la secreción no puede salir o modificarse adecuadamente por el sistema de conductos, el producto final no llega de forma correcta al sitio donde debe actuar.',
+    pista: 'Te está preguntando por qué el problema puede estar en la salida, aunque la fabricación todavía exista.'
+  },
+  {
+    codigo: 'EX1000-05',
+    pregunta: '¿Por qué la disfunción de la glándula de Meibomio es un buen ejemplo de relación estructura-función alterada?',
+    respuesta: 'Porque la obstrucción del conducto cambia la arquitectura glandular, reduce la salida de meibum y altera la película lagrimal, produciendo consecuencias clínicas como ojo seco e inflamación.',
+    pista: 'Te pide conectar cambio estructural, falla funcional y manifestación clínica en una sola explicación.'
+  },
+  {
+    codigo: 'EX1000-06',
+    pregunta: 'Explica por qué en las glándulas exocrinas no basta estudiar solo la unidad secretora.',
+    respuesta: 'Porque la función final depende tanto de la producción del secreto en la unidad terminal como de su transporte, modificación y liberación a través de los conductos.',
+    pista: 'Te está preguntando por qué end-piece y ducto forman un sistema y no dos temas separados.'
+  },
+  {
+    codigo: 'EX1000-07',
+    pregunta: '¿Por qué el tipo de secreción influye en la complejidad funcional del sistema ductal?',
+    respuesta: 'Porque las secreciones acuosas suelen requerir más ajuste de agua e iones durante el trayecto, mientras las lipídicas necesitan menos modificación.',
+    pista: 'Te pide relacionar el contenido del producto con cuánto trabajo extra debe hacer el ducto.'
+  },
+  {
+    codigo: 'EX1000-08',
+    pregunta: 'Compara cómo se expulsa la secreción en glándula mamaria y en próstata.',
+    respuesta: 'En la glándula mamaria la expulsión depende de la contracción de células mioepiteliales; en la próstata depende sobre todo del estroma fibromuscular y del sistema de conductos.',
+    pista: 'Te está preguntando por el mecanismo de salida en dos glándulas de reserva, pero con apoyo estructural distinto.'
+  },
+  {
+    codigo: 'EX1000-09',
+    pregunta: 'Explica por qué el conocimiento de la relación estructura-función puede ayudar en diagnóstico y manejo clínico.',
+    respuesta: 'Porque permite entender cómo cambios en unidades secretoras o conductos alteran la cantidad, composición o liberación de la secreción, lo que facilita interpretar patologías glandulares.',
+    pista: 'Te pide llevar la histología a clínica: cómo una alteración morfológica termina afectando la función y el diagnóstico.'
+  },
+  {
+    codigo: 'EX1000-10',
+    pregunta: 'Justifica por qué el artículo insiste en que la estructura glandular no debe estudiarse como un dato aislado.',
+    respuesta: 'Porque la arquitectura de la glándula determina el tipo de secreción, su mecanismo de liberación, la participación de los conductos y la función fisiológica o clínica del órgano.',
+    pista: 'Te está preguntando por qué forma, secreción, ductos y función deben entenderse juntos y no por separado.'
+  }
     ];
 
     const preguntas = {
